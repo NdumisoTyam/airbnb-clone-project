@@ -127,3 +127,38 @@ Tracks financial transactions for bookings.
 ---
 
 > This relational model supports key platform functions, including listing properties, managing reservations, collecting payments, and gathering user feedback.
+
+## Feature Breakdown
+
+> This section covers the main backend features of the application, including available APIs, user functionality, and improvements in backend performance.
+
+### 1. API Documentation
+- **OpenAPI Standard**: The backend APIs are documented using the OpenAPI (Swagger) standard. This ensures clarity, consistency, and easy integration for frontend or external developers.
+- **Django REST Framework (DRF)**: Exposes RESTful endpoints to support CRUD operations on users, properties, bookings, and more.
+- **GraphQL**: Offers a flexible and efficient way to query and manipulate data, allowing clients to request exactly what they need.
+
+### 2. User Authentication
+- **Endpoints**: `/users/`, `/users/{user_id}/`
+- **Features**: Register new users, log in, manage authentication tokens, and update user profile data. Supports both guest and host roles.
+
+### 3. Property Management
+- **Endpoints**: `/properties/`, `/properties/{property_id}/`
+- **Features**: Hosts can create, retrieve, update, and delete property listings. Listings include details such as price, location, and amenities.
+
+### 4. Booking System
+- **Endpoints**: `/bookings/`, `/bookings/{booking_id}/`
+- **Features**: Guests can create bookings for properties, update reservation details, and manage check-in and check-out status.
+
+### 5. Payment Processing
+- **Endpoints**: `/payments/`
+- **Features**: Handles all payment transactions securely. It integrates with bookings to record payment status, amount, and timestamps.
+
+### 6. Review System
+- **Endpoints**: `/reviews/`, `/reviews/{review_id}/`
+- **Features**: Users can post and manage reviews for the properties they have booked. Each review includes a rating and an optional comment.
+
+### 7. Database Optimizations
+- **Indexing**: Frequently queried fields, such as user ID and property ID, are indexed to improve data retrieval speed.
+- **Caching**: Uses caching strategies, including Redis, to reduce load on the database and speed up common queries and API responses.
+
+> Together, these features make the system efficient, scalable, and user-friendly, supporting both traditional RESTful API workflows and modern GraphQL clients.
