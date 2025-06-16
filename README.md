@@ -46,3 +46,84 @@ A high-level Python web framework used for building robust backends and RESTful 
   Continuous Integration and Continuous Deployment tools used to automate testing, building, and deployment processes, ensuring code quality and faster delivery.
 
 > This technology stack allows us to build a modern, scalable, and maintainable web application with both REST and GraphQL APIs, asynchronous processing, automated deployment, and a responsive frontend.
+
+## Database Design
+
+The following is an overview of the main database entities in the project, along with key fields and their relationships:
+
+### 1. Users
+Represents individuals using the platform, both guests and hosts.
+- `id`: Primary key
+- `username`: Unique identifier for login
+- `email`: Contact information
+- `password`: Hashed for authentication
+- `role`: Defines if the user is a guest, host, or admin
+
+**Relationships**:  
+- A user can own multiple properties.  
+- A user can make multiple bookings.  
+- A user can leave multiple reviews.  
+- A user can make multiple payments.
+
+---
+
+### 2. Properties
+Represents real estate listings that can be booked.
+- `id`: Primary key
+- `owner_id`: Foreign key to Users (host)
+- `title`: Name or short description
+- `location`: Address or geographic info
+- `price_per_night`: Cost of booking per night
+
+**Relationships**:  
+- A property belongs to one user (host).  
+- A property can have multiple bookings.  
+- A property can have multiple reviews.
+
+---
+
+### 3. Bookings
+Tracks reservations made by users for properties.
+- `id`: Primary key
+- `user_id`: Foreign key to Users (guest)
+- `property_id`: Foreign key to Properties
+- `start_date`: Booking start
+- `end_date`: Booking end
+- `status`: e.g., confirmed, cancelled, completed
+
+**Relationships**:  
+- A booking is made by one user.  
+- A booking is for one property.  
+- A booking can have one associated payment.
+
+---
+
+### 4. Reviews
+Captures user feedback for properties.
+- `id`: Primary key
+- `user_id`: Foreign key to Users (guest)
+- `property_id`: Foreign key to Properties
+- `rating`: Numerical rating (e.g., 1-5)
+- `comment`: Text feedback
+
+**Relationships**:  
+- A review is written by one user.  
+- A review is for one property.
+
+---
+
+### 5. Payments
+Tracks financial transactions for bookings.
+- `id`: Primary key
+- `booking_id`: Foreign key to Bookings
+- `amount`: Total cost paid
+- `payment_date`: When the transaction occurred
+- `payment_method`: e.g., credit card, PayPal
+
+**Relationships**:  
+- A payment belongs to one booking.  
+- A booking can have one payment.
+
+---
+
+> This relational model supports key platform functions, including listing properties, managing reservations, collecting payments, and gathering user feedback.
