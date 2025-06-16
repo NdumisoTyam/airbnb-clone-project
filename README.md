@@ -162,3 +162,41 @@ Tracks financial transactions for bookings.
 - **Caching**: Uses caching strategies, including Redis, to reduce load on the database and speed up common queries and API responses.
 
 > Together, these features make the system efficient, scalable, and user-friendly, supporting both traditional RESTful API workflows and modern GraphQL clients.
+
+## API Security
+
+> Security is a key part of this application. It protects user data, ensures transaction integrity, and stops unauthorized access. The following measures will help secure the API:
+
+### 1. Authentication
+- **Method**: Token-based authentication using JWT (JSON Web Tokens) or session-based authentication.
+- **Purpose**: Verifies that only confirmed users can access protected endpoints, like booking or profile management.
+- **Importance**: Stops unauthorized access to sensitive user accounts and data.
+
+### 2. Authorization
+- **Method**: Role-based access control (RBAC).
+- **Purpose**: Limits access to specific actions based on user roles, such as allowing only hosts to create properties.
+- **Importance**: Ensures users can only do what they are allowed, supporting business rules and preventing privilege escalation.
+
+### 3. Rate Limiting
+- **Tool**: Django Ratelimit or similar middleware.
+- **Purpose**: Controls the number of API requests from a single IP or user over a specific time.
+- **Importance**: Protects the API from abuse, brute-force attacks, and denial-of-service (DoS) threats.
+
+### 4. Input Validation & Sanitization
+- **Method**: Validate all incoming data using serializers and forms.
+- **Purpose**: Prevents injection attacks, like SQL injection and XSS, by ensuring only valid data is processed.
+- **Importance**: Maintains database integrity and protects users from harmful input.
+
+### 5. Secure Payment Handling
+- **Method**: Use HTTPS for all traffic and work with secure third-party payment gateways, such as Stripe.
+- **Purpose**: Encrypts payment data in transit and relies on PCI-compliant providers for payment processing.
+- **Importance**: Protects financial information and helps prevent fraud.
+
+### 6. HTTPS & SSL
+- **Method**: Use SSL certificates and redirect all HTTP requests to HTTPS.
+- **Purpose**: Encrypts all data sent between clients and servers.
+- **Importance**: Stops man-in-the-middle attacks and prevents eavesdropping on sensitive data.
+
+---
+
+> By implementing these security measures, the application protects personal information, secures transactions, and ensures safe interactions between users and the system.
