@@ -200,3 +200,30 @@ Tracks financial transactions for bookings.
 ---
 
 > By implementing these security measures, the application protects personal information, secures transactions, and ensures safe interactions between users and the system.
+
+## CI/CD Pipeline
+
+### What is CI/CD?
+
+**CI/CD** means **Continuous Integration** and **Continuous Deployment/Delivery**. It is a development practice that allows teams to automatically build, test, and deploy code changes more often and reliably. CI makes sure that new code is merged and tested continuously, while CD automates the delivery of that code to production environments.
+
+### Why It Matters for This Project
+
+Implementing a CI/CD pipeline helps:
+- Detect bugs early with automated testing
+- Lower manual deployment errors
+- Ensure consistent and repeatable deployments
+- Speed up development by providing quick feedback
+- Maintain high code quality and project stability
+
+### Tools Used
+
+- **GitHub Actions**: Automates workflows for building, testing, and deploying the application when code is pushed or merged into the repository.
+- **Docker**: Creates containerized environments to ensure consistency across development, testing, and production.
+- **Docker Compose**: Helps set up services like the web server, database, and Redis in isolated containers for testing and deployment.
+- **Heroku / Render / AWS** *(optional)*: Cloud hosting platforms that can host the application for automated deployment once CI checks pass.
+- **pytest / unittest**: Frameworks for writing and running automated tests during the CI stage.
+
+---
+
+> The CI/CD pipeline boosts team productivity and system reliability by automating repetitive tasks and ensuring every code change is checked before release.
